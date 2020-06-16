@@ -26,16 +26,14 @@ def add_user():
 @app.route('/users')
 def users():
 	users = mongo.db.user.find()
-	resp = dumps(users)
             #{'name': 'Ben Hammond',
             # 'title': 'IT Systems Analyst'}
-	return resp
+	return dumps(users)
 		
 @app.route('/user/<id>')
 def user(id):
 	user = mongo.db.user.find_one({'_id': ObjectId(id)})
-	resp = dumps(user)
-	return resp
+	return dumps(user)
 
 @app.route('/update', methods=['PUT'])
 def update_user():
